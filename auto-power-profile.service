@@ -1,0 +1,30 @@
+[Unit] 
+Description=Auto power profile Service 
+After=network.target power-profiles-daemon.service 
+Requires=power-profiles-daemon.service
+
+[Service] 
+ExecStart=/usr/bin/python3 /usr/local/bin/auto-power-profile.py 
+Restart=always 
+RestartSec=10 
+Environment=PYTHONUNBUFFERED=1
+
+#Security settings
+
+ProtectSystem=strict 
+ProtectHome=read-only 
+PrivateTmp=yes 
+NoNewPrivileges=yes 
+CapabilityBoundingSet= 
+RestrictNamespaces=yes 
+RestrictAddressFamilies=AF_UNIX 
+ProtectKernelTunables=yes 
+ProtectKernelModules=yes 
+ProtectControlGroups=yes 
+SystemCallFilter=@system-service 
+SystemCallArchitectures=native 
+MemoryDenyWriteExecute=yes 
+LockPersonality=yes
+
+[Install] 
+WantedBy=multi-user.target
