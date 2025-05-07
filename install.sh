@@ -14,7 +14,6 @@ fi
 
 # Check prerequisites
 command -v python3 >/dev/null 2>&1 || { echo "python3 is required but not installed. Aborting."; exit 1; }
-command -v pip3 >/dev/null 2>&1 || { echo "pip3 is required but not installed. Aborting."; exit 1; }
 command -v powerprofilesctl >/dev/null 2>&1 || { echo "powerprofilesctl is required but not installed. Aborting."; exit 1; }
 
 # Define file paths
